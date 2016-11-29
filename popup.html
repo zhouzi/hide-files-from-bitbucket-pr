@@ -1,0 +1,72 @@
+<div id="pending-screen" class="pending-screen">
+  <div class="pending-screen__content">
+    This is not a bitbucket project.
+  </div>
+</div>
+
+Active rules for "<span id="project-name"></span>":
+
+<ul id="rules-list" class="rules-list"></ul>
+
+<form id="add-rule-form">
+  <input id="add-rule-input" type="text">
+  <button type="submit">
+    add rule
+  </button>
+</form>
+
+<script src="dist/popup.js"></script>
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    min-width: 300px;
+    padding: 20px;
+  }
+
+  .pending-screen {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+  }
+
+  .pending-screen__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .rules-list::before,
+  .rules-list::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .rules-list button {
+    float: right;
+  }
+</style>
