@@ -19,6 +19,9 @@ chrome.tabs.query({
       const pendingScreen = document.getElementById('pending-screen');
       pendingScreen.style.display = 'none';
 
+      const activeScreen = document.getElementById('active-screen');
+      activeScreen.style.display = '';
+
       const rulesListElement = document.getElementById('rules-list');
       rules.forEach(addRuleElement);
 
@@ -37,16 +40,27 @@ chrome.tabs.query({
 
       function addRuleElement(rule) {
         const ruleElement = document.createElement('li');
-        ruleElement.textContent = rule;
+        ruleElement.classList.add('table');
+
+        const masterCell = document.createElement('div');
+        masterCell.classList.add('table-cell');
+        masterCell.classList.add('table-cell--master');
+        masterCell.textContent = rule;
+
+        ruleElement.appendChild(masterCell);
 
         const button = document.createElement('button');
-        button.textContent = 'remove';
+        button.textContent = 'Remove';
         button.addEventListener('click', () => {
           storage.removeRule(projectName, rule);
           removeRuleElement(ruleElement);
         });
 
-        ruleElement.appendChild(button);
+        const slaveCell = document.createElement('div');
+        slaveCell.classList.add('table-cell');
+        slaveCell.appendChild(button);
+
+        ruleElement.appendChild(slaveCell);
         rulesListElement.appendChild(ruleElement);
       }
 
