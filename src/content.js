@@ -1,7 +1,7 @@
 import parallel from 'async/parallel';
 import minimatch from 'minimatch';
 import storage from './lib/storage';
-import { GET_PROJECT_NAME } from './lib/actions';
+import { GET_PROJECT_NAME, RULES_CHANGE } from './lib/actions';
 
 const projectNameRegexp = new RegExp('https://bitbucket.org/([^/]+/[^/]+)');
 const projectName = window.location.href.match(projectNameRegexp)[1];
@@ -32,11 +32,10 @@ parallel([
   }
 ], (err, [rules, wrapper]) => {
   const files = Array.prototype.slice.call(wrapper.querySelectorAll('.commentable-diff'));
+  updateHiddenFiles(files, rules);
+
   files.forEach((file) => {
     const path = file.getAttribute('data-path');
-    if (isIgnored(path, rules)) {
-      file.style.display = 'none';
-    }
 
     const addRuleButton = document.createElement('button');
     addRuleButton.classList.add('aui-button');
@@ -54,7 +53,26 @@ parallel([
 
     file.querySelector('.aui-buttons').appendChild(addRuleButton);
   });
+
+  chrome.runtime.onMessage.addListener((action) => {
+    if (action.type === RULES_CHANGE) {
+      storage.getRules(projectName, (rules) => {
+        updateHiddenFiles(files, rules);
+      });
+    }
+  });
 });
+
+function updateHiddenFiles(files, rules) {
+  files.forEach((file) => {
+    const path = file.getAttribute('data-path');
+    if (isIgnored(path, rules)) {
+      file.style.display = 'none';
+    } else {
+      file.style.display = '';
+    }
+  });
+}
 
 function isIgnored(path, rules) {
   return rules.some((rule) => minimatch(path, rule));

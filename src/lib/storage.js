@@ -4,19 +4,19 @@ function getRules(name, callback) {
   });
 }
 
-function addRule(projectName, newRule) {
+function addRule(projectName, newRule, callback = () => {}) {
   getRules(projectName, (rules) => {
     chrome.storage.sync.set({
       [projectName]: rules.concat(newRule)
-    });
+    }, callback);
   });
 }
 
-function removeRule(projectName, ruleToRemove) {
+function removeRule(projectName, ruleToRemove, callback = () => {}) {
   getRules(projectName, (rules) => {
     chrome.storage.sync.set({
       [projectName]: rules.filter((rule) => rule !== ruleToRemove)
-    });
+    }, callback);
   });
 }
 

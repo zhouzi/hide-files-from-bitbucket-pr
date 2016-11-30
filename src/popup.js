@@ -1,4 +1,4 @@
-import { GET_PROJECT_NAME } from './lib/actions';
+import { GET_PROJECT_NAME, RULES_CHANGE } from './lib/actions';
 import storage from './lib/storage';
 
 chrome.tabs.query({
@@ -32,7 +32,7 @@ chrome.tabs.query({
         event.preventDefault();
 
         const newRule = inputElement.value;
-        storage.addRule(projectName, newRule);
+        storage.addRule(projectName, newRule, emitRulesChange);
         addRuleElement(newRule);
 
         inputElement.value = '';
@@ -52,7 +52,7 @@ chrome.tabs.query({
         const button = document.createElement('button');
         button.textContent = 'Remove';
         button.addEventListener('click', () => {
-          storage.removeRule(projectName, rule);
+          storage.removeRule(projectName, rule, emitRulesChange);
           removeRuleElement(ruleElement);
         });
 
@@ -68,5 +68,11 @@ chrome.tabs.query({
         rulesListElement.removeChild(ruleElement);
       }
     });
+
+    function emitRulesChange() {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        action: RULES_CHANGE
+      });
+    }
   });
 });
