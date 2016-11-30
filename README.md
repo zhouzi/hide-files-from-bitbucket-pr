@@ -6,8 +6,6 @@ Hide irrelevant files from Bitbucket pull requests.
 * [How to](#how-to)
 * [How do the patterns work?](#how-do-the-patterns-work)
 
-*The current version is more a working prototype than a real tool but it's going to get some love in the days to come.*
-
 ## How to
 
 1. Once the extension is installed, access to a pull request's page (should look like `https://bitbucket.org/<user>/<repo>/pull-requests/...`)
