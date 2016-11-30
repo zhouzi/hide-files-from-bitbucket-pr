@@ -24,5 +24,6 @@
         "dist/content.js"
       ]
     }
-  ]
+  ],
+  "options_page": "options.html"
 }

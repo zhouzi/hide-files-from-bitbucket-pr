@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/options.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Rules in use</div>
+      <div id="rules"></div>
+
+      <article
+        id="no-results"
+        class="item"
+        style="display: none;"
+      >
+        <em>No active rules</em>
+      </article>
+
+      <form id="add-rule-form" class="item">
+        <label class="group">
+          Project name
+          <input type="text" placeholder="e.g user/repo, user" id="add-rule-project-name" required>
+        </label>
+
+        <label class="group">
+          Rule
+          <input type="text" placeholder="e.g Resources/**, **/*.lock" id="add-rule-rule" required>
+        </label>
+
+        <button type="submit">
+          Add rule
+        </button>
+      </form>
+    </div>
+
+    <script src="dist/options.js"></script>
+  </body>
+</html>

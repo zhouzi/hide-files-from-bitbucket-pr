@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+a {
+  color: #3572b0;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 4px 8px;
+}
+
+button {
+  cursor: pointer;
+  background: #e9e9e9;
+  white-space: nowrap;
+}
+
+button[type=submit] {
+  font-weight: 700;
+  color: white;
+  background: #3572b0;
+  border-color: transparent;
+}
+
+button[type=submit]:focus,
+button[type=submit]:hover {
+  background: #2a67a5;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table-cell--master {
+  width: 100%;
+  padding-right: 0.5rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+li button {
+  font-size: 0.8rem;
+}
+
+form {
+  margin-bottom: 0.25rem;
+}
+
+form input,
+form button {
+  width: 100%;
+}

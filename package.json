@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prepack": "npm run build",
-    "pack": "bestzip extension.zip icon-16.png icon-40.png icon-48.png icon-128.png manifest.json popup.html dist/",
+    "pack": "bestzip extension.zip icon-16.png icon-40.png icon-48.png icon-128.png manifest.json popup.html options.html css/ dist/",
     "dev": "webpack --watch",
     "build": "webpack -p -d"
   },

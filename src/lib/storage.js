@@ -20,8 +20,13 @@ function removeRule(projectName, ruleToRemove, callback = () => {}) {
   });
 }
 
+function getAllRules(callback) {
+  chrome.storage.sync.get(callback);
+}
+
 export default {
   getRules,
   addRule,
-  removeRule
+  removeRule,
+  getAllRules
 };

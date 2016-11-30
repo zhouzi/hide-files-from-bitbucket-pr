@@ -1,0 +1,20 @@
+.container {
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.item {
+  padding-top: 0.5rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+.group {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+form button {
+  width: auto;
+}
