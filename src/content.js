@@ -1,4 +1,5 @@
 import parallel from 'async/parallel';
+import minimatch from 'minimatch';
 import storage from './lib/storage';
 import { GET_PROJECT_NAME } from './lib/actions';
 
@@ -40,5 +41,5 @@ parallel([
 });
 
 function isIgnored(path, rules) {
-  return rules.some((rule) => path.indexOf(rule) === 0);
+  return rules.some((rule) => minimatch(path, rule));
 }
