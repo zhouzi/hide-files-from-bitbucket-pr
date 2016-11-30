@@ -2,7 +2,9 @@
 
 Hide irrelevant files from Bitbucket pull requests.
 
-* [Install](https://chrome.google.com/webstore/detail/hide-files-from-bitbucket/jkndmdikjlefnimdlpmoembjkppanpaf)
+* [Install for Chrome](https://chrome.google.com/webstore/detail/hide-files-from-bitbucket/jkndmdikjlefnimdlpmoembjkppanpaf)
+* [How to](#how-to)
+* [How do the patterns work?](#how-do-the-patterns-work)
 
 *The current version is more a working prototype than a real tool but it's going to get some love in the days to come.*
 
@@ -13,4 +15,7 @@ Hide irrelevant files from Bitbucket pull requests.
 3. Active rules for the current project are listed here, you can also add new ones
 4. When you're done editing the rules, reload the page
 
-Note: currently, it's going to look for file paths that starts with the given rules. For example, if you add a `dist/` rule, every path that starts with `dist/` will be hidden.
+## How do the patterns work?
+
+The extension uses [minimatch](https://github.com/isaacs/minimatch) to match paths against the rules.
+You can use [globtester](http://www.globtester.com/) if you want to test some rules.
