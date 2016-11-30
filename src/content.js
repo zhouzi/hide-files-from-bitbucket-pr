@@ -37,6 +37,22 @@ parallel([
     if (isIgnored(path, rules)) {
       file.style.display = 'none';
     }
+
+    const addRuleButton = document.createElement('button');
+    addRuleButton.classList.add('aui-button');
+    addRuleButton.classList.add('aui-button-light');
+    addRuleButton.textContent = 'Hide file';
+    addRuleButton.addEventListener('click', () => {
+      const newRule = prompt('Would you like to hide files matching this pattern?', path);
+      if (!newRule) {
+        return;
+      }
+
+      storage.addRule(projectName, newRule);
+      file.style.display = 'none';
+    });
+
+    file.querySelector('.aui-buttons').appendChild(addRuleButton);
   });
 });
 
