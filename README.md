@@ -2,6 +2,8 @@
 
 Hide irrelevant files from Bitbucket pull requests.
 
+![Extension Screenshot](screenshot.png)
+
 * [Install for Chrome](https://chrome.google.com/webstore/detail/hide-files-from-bitbucket/jkndmdikjlefnimdlpmoembjkppanpaf)
 * [How to](#how-to)
 * [How do the patterns work?](#how-do-the-patterns-work)
